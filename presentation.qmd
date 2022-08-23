@@ -1,0 +1,143 @@
+---
+#this is a trick to write custom title slides
+#title: "A2TEA updates - using Quarto/reveal.js"
+#author: "Tyll"
+format: 
+  revealjs:
+    pdf-separate-fragments: true
+    code-copy: true
+    multiplex: true
+    link-external-newwindow: true
+    footer: "[A2TEA.Workflow](https://github.com/tgstoecker/A2TEA.Workflow)/[A2TEA.WebApp](https://github.com/tgstoecker/A2TEA.WebApp)"
+    theme: ["pp.scss"]
+    slide-number: c/t
+    incremental: true
+    #title-slide-attributes: 
+      #logo: img/a2tea_hexsticker.png
+      #data-background-size: cover
+editor: visual
+execute: 
+  eval: true
+  echo: true
+---
+
+<h1>A2TEA updates -</h1>
+
+<h2>using Quarto/reveal.js</h2>
+
+<hr>
+
+<h3>Tyll Stöcker</h3>
+
+![](img/a2tea_hexsticker.png){.relative}
+
+```{r setup}
+#| include: false
+
+library(ggplot2)
+
+library(paletteer)
+
+# for fonts
+library(showtext)
+font_add_google("Jost", "Jost")
+showtext_auto()
+theme_set(theme_minimal(base_family = "Jost"))
+```
+
+## Quarto
+
+Quarto® is an open-source scientific and technical publishing system built on Pandoc
+
+-   Create dynamic content with Python, R, Julia, and Observable.
+-   Author documents as plain text markdown or Jupyter notebooks.
+-   Publish high-quality articles, reports, presentations, websites, blogs, and books in HTML, PDF, MS Word, ePub, and more.
+-   Author with scientific markdown, including equations, citations, crossrefs, figure panels, callouts, advanced layout, and more.
+
+## Standards for publications & modern software
+
+-   Test data
+-   Containerization of snakemake workflows
+-   R tools as packages
+    -   appropriate documentation
+-   CI/CD
+-   Package maintenance
+
+## Documentation
+
+- Building an R package + Writing a manual/introductory guide?
+- devtools, roxygen2 & pkgdown to the rescue
+
+. . .
+
+![](img/roxygen2_logo.png){.absolute top="375" left="390" width="150"}
+![](img/devtools_logo.svg){.absolute top="375" left="250" width="150"} 
+![](img/pkgdown_logo.png){.absolute top="500" left="325" width="150"}
+
+- devtools = layout, build & test your package
+- roxygen2 = create documentation
+- pkgdown = transform R package to webpage (host on github pages)
+
+
+## CI/CD
+
+-   "Continuous Integration/Continuous Delivery"
+-   facilitated by Github actions
+    -   with every push to origin:
+        -   check if package can be installed
+        -   check if documentation can be build
+        -   ...
+
+## Package maintenance workflow
+
+-   Add features and push to repo
+
+-   Changes are mirrored in documentation/manual
+
+-   Github Actions facilitate CI/CD tests
+
+-   ::: {.fragment .highlight-red}
+    Run containerization script
+    :::
+
+    -   packages A2TEA.WebApp into Docker image
+    -   pushes image to docker hub
+
+-   ::: {.fragment .highlight-red}
+    Run hosting script
+    :::
+
+## Docker/Singularity
+
+-   Easy user experience if WebApp should start from container
+-   Stable & usable latest release if package install should fail
+
+```{bash}
+#| eval: false
+#| echo: true
+
+#pull the image from dockerhub
+singularity pull a2tea_webapp.sif docker://tgstoecker/a2tea_webapp:latest
+
+#open R console of image in non-persistent but writable mode
+singularity run --writable --fakeroot a2tea_webapp.sif R
+#or
+singularity run --writable --no-home a2tea_webapp.sif R
+```
+
+## shinyapps.io
+
+- Hosting solution - no installs, any system, test data included
+  - Making reviewers happy ;D
+- Pricing : ![](img/shinyapps_io_pricing.png)
+- [Let's take a peak - shall we ;D ?](https://tgstoecker.shinyapps.io/A2TEA-WebApp/)
+
+## Final thoughts
+
+-   Quarto and it's capabilities are very intriguing - might sway me away from "pure" jupyter notebooks
+-   shinyapps.io is a neat temporary solution - hosting with Rstudio (shiny) server seems a valid option going forward (post-publication)
+-   With software standards & demo capability achieved I can't find any other reason to put off writing... :D
+
+. . .
+
+![](https://c.tenor.com/CrWHpzxIZYEAAAAC/cat-typing-gif.gif){.absolute right="300" width="450"}

@@ -1,0 +1,58 @@
+[
+  {
+    "objectID": "presentation.html#quarto",
+    "href": "presentation.html#quarto",
+    "title": "",
+    "section": "Quarto",
+    "text": "Quarto\nQuarto® is an open-source scientific and technical publishing system built on Pandoc\n\nCreate dynamic content with Python, R, Julia, and Observable.\nAuthor documents as plain text markdown or Jupyter notebooks.\nPublish high-quality articles, reports, presentations, websites, blogs, and books in HTML, PDF, MS Word, ePub, and more.\nAuthor with scientific markdown, including equations, citations, crossrefs, figure panels, callouts, advanced layout, and more."
+  },
+  {
+    "objectID": "presentation.html#standards-for-publications-modern-software",
+    "href": "presentation.html#standards-for-publications-modern-software",
+    "title": "",
+    "section": "Standards for publications & modern software",
+    "text": "Standards for publications & modern software\n\nTest data\nContainerization of snakemake workflows\nR tools as packages\n\nappropriate documentation\n\nCI/CD\nPackage maintenance"
+  },
+  {
+    "objectID": "presentation.html#documentation",
+    "href": "presentation.html#documentation",
+    "title": "",
+    "section": "Documentation",
+    "text": "Documentation\n\nBuilding an R package + Writing a manual/introductory guide?\ndevtools, roxygen2 & pkgdown to the rescue\n\n\n  \n\ndevtools = layout, build & test your package\nroxygen2 = create documentation\npkgdown = transform R package to webpage (host on github pages)"
+  },
+  {
+    "objectID": "presentation.html#cicd",
+    "href": "presentation.html#cicd",
+    "title": "",
+    "section": "CI/CD",
+    "text": "CI/CD\n\n“Continuous Integration/Continuous Delivery”\nfacilitated by Github actions\n\nwith every push to origin:\n\ncheck if package can be installed\ncheck if documentation can be build\n…"
+  },
+  {
+    "objectID": "presentation.html#package-maintenance-workflow",
+    "href": "presentation.html#package-maintenance-workflow",
+    "title": "",
+    "section": "Package maintenance workflow",
+    "text": "Package maintenance workflow\n\nAdd features and push to repo\nChanges are mirrored in documentation/manual\nGithub Actions facilitate CI/CD tests\n\nRun containerization script\n\n\npackages A2TEA.WebApp into Docker image\npushes image to docker hub\n\n\nRun hosting script"
+  },
+  {
+    "objectID": "presentation.html#dockersingularity",
+    "href": "presentation.html#dockersingularity",
+    "title": "",
+    "section": "Docker/Singularity",
+    "text": "Docker/Singularity\n\nEasy user experience if WebApp should start from container\nStable & usable latest release if package install should fail\n\n\n#pull the image from dockerhub\nsingularity pull a2tea_webapp.sif docker://tgstoecker/a2tea_webapp:latest\n\n#open R console of image in non-persistent but writable mode\nsingularity run --writable --fakeroot a2tea_webapp.sif R\n#or\nsingularity run --writable --no-home a2tea_webapp.sif R"
+  },
+  {
+    "objectID": "presentation.html#shinyapps.io",
+    "href": "presentation.html#shinyapps.io",
+    "title": "",
+    "section": "shinyapps.io",
+    "text": "shinyapps.io\n\nHosting solution - no installs, any system, test data included\n\nMaking reviewers happy ;D\n\nPricing : \nLet’s take a peak - shall we ;D ?"
+  },
+  {
+    "objectID": "presentation.html#final-thoughts",
+    "href": "presentation.html#final-thoughts",
+    "title": "",
+    "section": "Final thoughts",
+    "text": "Final thoughts\n\nQuarto and it’s capabilities are very intriguing - might sway me away from “pure” jupyter notebooks\nshinyapps.io is a neat temporary solution - hosting with Rstudio (shiny) server seems a valid option going forward (post-publication)\nWith software standards & demo capability achieved I can’t find any other reason to put off writing… :D\n\n\n\n\n\nA2TEA.Workflow/A2TEA.WebApp"
+  }
+]
